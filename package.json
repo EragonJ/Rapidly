@@ -1,1 +1,14 @@
-
+{
+    "name" : "Rapid",
+    "version" : "0.0.1",
+    "description" : "This is a API quick builder made for Express.js",
+    "author" : "EragonJ <eragonj@eragonj.me>",
+    "dependencies" : {
+    },
+    "devDependencies" : {
+        "commander" : ">= 1.0.0"
+    },
+    "engines" : {
+        "node" : ">= 0.8.3"
+    }
+}
