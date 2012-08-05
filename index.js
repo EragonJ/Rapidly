@@ -1,1 +1,1 @@
-module.exports = require('./lib/Rapid.js');
+module.exports = require('./lib/Rapidly.js');

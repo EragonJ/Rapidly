@@ -1,7 +1,7 @@
 {
-    "name" : "Rapid",
+    "name" : "rapidly",
     "version" : "0.0.1",
-    "description" : "This is a API quick builder made for Express.js",
+    "description" : "This helper can help you set your API routes/actions rapidly based on Express.js",
     "author" : "EragonJ <eragonj@eragonj.me>",
     "dependencies" : {
         "commander" : ">= 1.0.0"

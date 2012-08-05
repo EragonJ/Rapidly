@@ -30,13 +30,13 @@ function build( schemaName ) {
     ,   schemaRootDirPath = cwd + '/schema/'                         // ~/Sites/Test/schema/
     ,   routePath = routeRootDirPath + schemaName + '/'              // ~/Sites/Test/routes/user/
     ,   schemaFilePath = schemaRootDirPath + schemaFileName          // ~/Sites/Test/schema/user.js
-    ,   templateRootDirPath = __dirname + '/../template/'            // node_modules/rapid/template/
+    ,   templateRootDirPath = __dirname + '/../template/'            // node_modules/rapidly/template/
     ,   templatePathOf = {
-        "schema" : templateRootDirPath + 'schema.js',                // node_modules/rapid/template/schema.js
-        "create" : templateRootDirPath + 'create.js',                // node_modules/rapid/template/create.js
-        "read"   : templateRootDirPath + 'read.js',                  // node_modules/rapid/template/read.js
-        "update" : templateRootDirPath + 'update.js',                // node_modules/rapid/template/update.js
-        "delete" : templateRootDirPath + 'delete.js',                // node_modules/rapid/template/delete.js
+        "schema" : templateRootDirPath + 'schema.js',                // node_modules/rapidly/template/schema.js
+        "create" : templateRootDirPath + 'create.js',                // node_modules/rapidly/template/create.js
+        "read"   : templateRootDirPath + 'read.js',                  // node_modules/rapidly/template/read.js
+        "update" : templateRootDirPath + 'update.js',                // node_modules/rapidly/template/update.js
+        "delete" : templateRootDirPath + 'delete.js',                // node_modules/rapidly/template/delete.js
     }
     ,   actions = ['create', 'read', 'update', 'delete'];            // This would create : 
                                                                      // ~/Sites/Test/routes/user/create.js
