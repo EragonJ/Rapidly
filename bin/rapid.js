@@ -1,27 +1,41 @@
 var fs = require('fs'),
+    util = require('util'),
     program = require('commander');
 
 program
     .version('0.0.1')
-    .option('build [schemaName]', 'Create Necessary Files/Directories')
+    .option('build [schemaName]', 'Build Necessary Files/Directories')
     .option('--rebuild', 'Rebuild the Schema File ')
-    .parse(process.argv);
+    .parse( process.argv );
 
 if ( !!program.build ) {
 
+    if ( typeof program.build !== 'string' ) {
+
+        console.log('schemaName not found');
+        return false;
+    }
+
     var schemaName = program.build;
-    create( schemaName );
+    build( schemaName );
 }
 
-function create( schemaName ) {
+function build( schemaName ) {
 
     var cwd = process.cwd()                                          // ~/Sites/Test/
     ,   schemaFileName = schemaName + '.js'                          // user.js
-    ,   routeRootPath = cwd + '/routes/'                             // ~/Sites/Test/routes/
-    ,   routePath = routeRootPath + schemaName + '/'                 // ~/Sites/Test/routes/user/
-    ,   schemaRootPath = cwd + '/schema/'                            // ~/Sites/Test/schema/
-    ,   schemaFilePath = schemaRootPath + schemaFileName             // ~/Sites/Test/schema/user.js
-
+    ,   routeRootDirPath = cwd + '/routes/'                          // ~/Sites/Test/routes/
+    ,   schemaRootDirPath = cwd + '/schema/'                         // ~/Sites/Test/schema/
+    ,   routePath = routeRootDirPath + schemaName + '/'              // ~/Sites/Test/routes/user/
+    ,   schemaFilePath = schemaRootDirPath + schemaFileName          // ~/Sites/Test/schema/user.js
+    ,   templateRootDirPath = __dirname + '/../template/'            // node_modules/rapid/template/
+    ,   templatePathOf = {
+        "schema" : templateRootDirPath + 'schema.js',                // node_modules/rapid/template/schema.js
+        "create" : templateRootDirPath + 'create.js',                // node_modules/rapid/template/create.js
+        "read"   : templateRootDirPath + 'read.js',                  // node_modules/rapid/template/read.js
+        "update" : templateRootDirPath + 'update.js',                // node_modules/rapid/template/update.js
+        "delete" : templateRootDirPath + 'delete.js',                // node_modules/rapid/template/delete.js
+    }
     ,   actions = ['create', 'read', 'update', 'delete'];            // This would create : 
                                                                      // ~/Sites/Test/routes/user/create.js
                                                                      // ~/Sites/Test/routes/user/read.js
@@ -29,16 +43,16 @@ function create( schemaName ) {
                                                                      // ~/Sites/Test/routes/user/delete.js
 
     // Check Route Root Directory exists or not
-    fs.exists( routeRootPath, function( exists ) {
+    fs.exists( routeRootDirPath, function( exists ) {
         if ( !exists ) {
-            fs.mkdirSync( routeRootPath );
+            fs.mkdirSync( routeRootDirPath );
         }
     });
 
     // Check Schema Root Directory exists or not
-    fs.exists( schemaRootPath, function( exists ) {
+    fs.exists( schemaRootDirPath, function( exists ) {
         if ( !exists ) {
-            fs.mkdirSync( schemaRootPath );
+            fs.mkdirSync( schemaRootDirPath );
         }
     });
 
@@ -53,23 +67,26 @@ function create( schemaName ) {
     fs.exists( schemaFilePath, function( exists ) {
 
         if ( exists && !program.rebuild ) {
-            console.log('You have already define the schema : ' + schemaName + ' (' + schemaFilePath + ')' );
+
+            console.log('You have already defined the schema : ' + schemaName + ' (' + schemaFilePath + ')' );
             console.log('Overwite it with --rebuild option');
             return false;
         }
 
-        // TODO: Fix here with confirm
-        /*
-        if ( program.rebuild ) {
-            console.log( 'IMPORTANT :' );
-            console.log( 'This action will erase your originally defined CRUD js files' );
-            console.log( 'And your originally defined schema File' );
-        }
-        */
-        fs.writeFileSync(schemaFilePath, "{\n\n}");
+        copy( templatePathOf['schema'], schemaFilePath );
 
         for ( var i in actions ) {
-            fs.writeFileSync( routePath + actions[i] + '.js', "");
+            copy( templatePathOf[ actions[i] ], routePath + actions[i] + '.js' );
         }
+    });
+}
+
+function copy( inputFilePath, outputFilePath ) {
+
+    var is = fs.createReadStream( inputFilePath ),
+        os = fs.createWriteStream( outputFilePath );
+
+    util.pump(is, os, function() {
+        console.log('Copy to ' + outputFilePath + ' completed.');
     });
 }
