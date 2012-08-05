@@ -3,6 +3,19 @@
     "version" : "0.0.1",
     "description" : "This helper can help you set your API routes/actions rapidly based on Express.js",
     "author" : "EragonJ <eragonj@eragonj.me>",
+    "bin" : {
+        "rapidly" : "./bin/rapidly"
+    },
+    "main" : "index"
+    "repository" : {
+        "type" : "git",
+        "url" : "https://github.com/EragonJ/Rapidly"
+    },
+    "keywords" : [
+        "rapidly",
+        "api",
+        "express",
+    ],
     "dependencies" : {
         "commander" : ">= 1.0.0"
     },
@@ -11,5 +24,6 @@
     },
     "engines" : {
         "node" : ">= 0.8.3"
-    }
+    },
+    "license" : "MIT"
 }
