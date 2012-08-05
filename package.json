@@ -4,6 +4,7 @@
     "description" : "This is a API quick builder made for Express.js",
     "author" : "EragonJ <eragonj@eragonj.me>",
     "dependencies" : {
+        "commander" : ">= 1.0.0"
     },
     "devDependencies" : {
         "commander" : ">= 1.0.0"
