@@ -6,12 +6,14 @@ This is an API helper built on Express.js, with this, you can rapidly manage you
 Installation
 ------------
 
-npm install -g rapidly
+    npm install -g rapidly
 
 Command
 -------
 
-  Usage: rapidly [options]
+  Usage: 
+
+    rapidly [options]
 
   Options:
 
@@ -28,11 +30,8 @@ When using `rapidly`, **remember** to change current directory to the root path 
 Author
 ------
 
-EragonJ | 陳佳隆 ( Chia-Lung, Chen )
+EragonJ ( Chia-Lung, Chen ) 
 
-Email - eragonj [AT] eragonj.me
-
-Blog - [A humble navigator](http://eragonj.me)
 
 LICENSE
 -------
