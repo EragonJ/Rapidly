@@ -14,5 +14,5 @@
     "delete" : {
         "method" : "post",
         "scope" : "private"
-    },
+    }
 }

@@ -1,11 +1,13 @@
 #!/usr/bin/env node
 
+// # vim: filetype=javascript
+
 var fs = require('fs'),
     util = require('util'),
     program = require('commander');
 
 program
-    .version('0.0.2')
+    .version('0.0.3')
     .option('build [schemaName]', 'Build Necessary Files/Directories')
     .option('--rebuild', 'Rebuild the Schema File ')
     .parse( process.argv );
