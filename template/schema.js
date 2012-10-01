@@ -1,18 +1,18 @@
 {
     "create" : {
-        "method" : "post",
+        "method" : "POST",
         "scope" : "private"
     },
     "read" : {
-        "method" : "post",
-        "scope" : "private"
+        "method" : "GET",
+        "scope" : "public"
     },
     "update" : {
-        "method" : "post",
+        "method" : "POST",
         "scope" : "private"
     },
     "delete" : {
-        "method" : "post",
+        "method" : "POST",
         "scope" : "private"
     }
 }
