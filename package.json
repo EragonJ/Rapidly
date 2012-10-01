@@ -1,6 +1,6 @@
 {
     "name" : "rapidly",
-    "version" : "0.0.3",
+    "version" : "0.0.4",
     "description" : "This helper can help you set your API routes/actions rapidly based on Express.js",
     "author" : "EragonJ <eragonj@eragonj.me>",
     "bin" : {
