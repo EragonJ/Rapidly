@@ -25,15 +25,15 @@ Command
 Setup
 =====
 
-1. Generate your API routes by rapidly first
+* Generate your API routes by rapidly first
 
-2. Set up Rapidly on the top of server.js ( express.js entry point )
+* Set up Rapidly on the top of server.js ( express.js entry point )
 
 ```javascript
 var Rapidly = require('rapidly');
 ```
 
-3. Set Rapidly route **on the last part** of your routes settings ( Make sure Rapidly would not override your routes ). You can change the path to your api routes ( In the example setting, all requests passed into **http://myDomain/api/XXXXX** would be routed to Rapidly )
+* Set Rapidly route **on the last part** of your routes settings ( Make sure Rapidly would not override your routes ). You can change the path to your api routes ( In the example setting, all requests passed into **http://myDomain/api/XXXXX** would be routed to Rapidly )
 
 ```javascript
 app.all('/api/*', new Rapidly);
@@ -46,13 +46,13 @@ Notice
 
 * Because Rapidly is based on express.js, it would be better to include some validation / sanisization logic here. For me, I will try to include `express-validator` to help.
 
-1. Set up expressValidator on the top of server.js ( express.js entry point )
+* Set up expressValidator on the top of server.js ( express.js entry point )
 
 ```javascript
 var expressValidator = require('express-validator');
 ```
 
-2. Use expressValidator middleware for express.js
+* Use expressValidator middleware for express.js
 
 ```javascript
 app.use(expressValidator);
